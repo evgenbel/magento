@@ -1,0 +1,37 @@
+<layout version="0.1.0">
+    <veeble_giftregistry_index_index>
+        <reference name="content">
+            <block name="giftregistry.list" type="veeble_giftregistry/list"
+                   template="veeble/list.phtml" as="giftregistry_list"/>
+        </reference>
+    </veeble_giftregistry_index_index>
+    <veeble_giftregistry_index_new>
+        <reference name="content">
+            <block name="giftregistry.new" type="core/template"
+                   template="veeble/new.phtml" as="giftregistry_new"/>
+        </reference>
+    </veeble_giftregistry_index_new>
+    <veeble_giftregistry_index_edit>
+        <reference name="content">
+            <block name="giftregistry.edit" type="core/template"
+                   template="veeble/edit.phtml" as="giftregistry_edit"/>
+        </reference>
+    </veeble_giftregistry_index_edit>
+    <veeble_giftregistry_view_view>
+        <reference name="content">
+            <block name="giftregistry.view" type="core/template"
+                   template="veeble/view.phtml" as="giftregistry_view"/>
+        </reference>
+    </veeble_giftregistry_view_view>
+    <veeble_giftregistry_search_index>
+        <reference name="content">
+            <block name="giftregistry.search" type="core/template"
+                   template="veeble/search.phtml" as="giftregistry_search"/>
+        </reference>
+    </veeble_giftregistry_search_index>
+    <veeble_giftregistry_search_results>
+        <reference name="content">
+            <block name="giftregistry.results" type="veeble_giftregistry/list" template="veeble/list.phtml"/>
+        </reference>
+    </veeble_giftregistry_search_results>
+</layout>

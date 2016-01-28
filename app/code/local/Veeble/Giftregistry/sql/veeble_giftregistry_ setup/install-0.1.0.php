@@ -182,11 +182,11 @@ if ($installer->getConnection()->isTableExists($tableName) != true) {
  *
  *
  */
-$tableName = $installer->getTable('mdg_giftregistry/item');
+$tableName = $installer->getTable('veeble_giftregistry/item');
 // Check if the table already exists
 if ($installer->getConnection()->isTableExists($tableName) != true) {
     $table = $installer->getConnection()
-        ->newTable($installer->getTable('mdg_giftregistry/item'))
+        ->newTable($installer->getTable('veeble_giftregistry/item'))
         ->addColumn('item_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
             'identity'  => true,
             'unsigned'  => true,
@@ -204,9 +204,9 @@ if ($installer->getConnection()->isTableExists($tableName) != true) {
                 'nullable' => false,
             ),
             'Added At')
-        ->addIndex($installer->getIdxName('mdg_giftregistry/item', array('product_id')),
+        ->addIndex($installer->getIdxName('veeble_giftregistry/item', array('product_id')),
             array('product_id'))
-        ->addIndex($installer->getIdxName('mdg_giftregistry/item', array('registry_id')),
+        ->addIndex($installer->getIdxName('veeble_giftregistry/item', array('registry_id')),
             array('registry_id'));
     $installer->getConnection()->createTable($table);
 }

@@ -68,5 +68,13 @@
                 </args>
             </veeble_giftregistry>
         </routers>
+
+        <layout>
+            <updates>
+                <veeble_giftregistry module="veeble_giftregistry">
+                    <file>veeble_giftregistry.xml</file>
+                </veeble_giftregistry>
+            </updates>
+        </layout>
     </frontend>
 </config>
