@@ -32,7 +32,7 @@ class Veeble_Giftregistry_SearchController extends Mage_Core_Controller_Front_Ac
                 $results->addFieldToFilter('event_location',
                     $searchParams['location']);
             }
-            $this->getLayout()->getBlock('veeble_giftregistry.search.results')
+            $this->getLayout()->getBlock('giftregistry.results')
                 ->setCustomerRegistries($results);
         }
         $this->renderLayout();

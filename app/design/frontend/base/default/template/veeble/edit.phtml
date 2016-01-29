@@ -1,12 +1,13 @@
 <?php
 $helper = Mage::helper('veeble_giftregistry');
-$loadedRegistry = Mage::getSingleton('customer/session')->getLoadedRegistry();
+$loadedRegistry = Mage::registry('current_giftregistry');
 ?>
 <?php if ($loadedRegistry): ?>
-    <form action="<?php echo $this->getUrl('giftregistry/index/editPost/') ?>" method="post" id="form-validate">
+    <form action="<?php echo $this->getUrl('giftregistry/index/save/') ?>" method="post" id="form-validate">
         <fieldset>
             <?php echo $this->getBlockHtml('formkey') ?>
             <input type="hidden" id="type_id" value="<?php echo $loadedRegistry->getTypeId(); ?>"/>
+            <input type="hidden" name="registry_id" id="registry_id" value="<?php echo $loadedRegistry->getEntityId(); ?>"/>
             <ul class="form-list">
                 <li class="field">
                     <label class="giftreg" for="event_name"><?php echo $this->__('Event Name') ?></label>

@@ -5,9 +5,9 @@
         <ul class="form-list">
             <li>
                 <label for="type">Event type</label>
-                <select name="type" id="type">
+                <select name="search_params[type]" id="type">
                     <?php foreach ($helper->getEventTypes() as $type): ?>
-                        <option id="<?php echo $type->getTypeId(); ?>" value="<?php echo $type->getCode(); ?>">
+                        <option id="<?php echo $type->getTypeId(); ?>" value="<?php echo $type->getTypeId(); ?>">
                             <?php echo $type->getName(); ?>
                         </option>
                     <?php endforeach; ?>
@@ -15,15 +15,15 @@
             </li>
             <li class="field">
                 <label class="giftreg" for="name"><?php echo $this->__('Event Name') ?></label>
-                <input type="text" name="name" id="name" value="" title="Event Name"/>
+                <input type="text" name="search_params[name]" id="name" value="" title="Event Name"/>
             </li>
             <li class="field">
                 <label class="giftreg" for="location"><?php echo $this->__('Event Location') ?></label>
-                <input type="text" name="location" id="location" value="" title="Event Location"/>
+                <input type="text" name="search_params[location]" id="location" value="" title="Event Location"/>
             </li>
             <li class="field">
                 <label class="giftreg" for="country"><?php echo $this->__('Event Country') ?></label>
-                <input type="text" name="country" id="country" value="" title="Event Country"/>
+                <input type="text" name="search_params[country]" id="country" value="" title="Event Country"/>
             </li>
         </ul>
         <div class="buttons-set">
