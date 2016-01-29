@@ -18,22 +18,17 @@ class Veeble_Giftregistry_ItemController extends Mage_Core_Controller_Front_Acti
     public function deleteAction()
     {
         try {
-            $data = $this->getRequest()->getParams();
-            $product_id = $data['product_id'];
-            $registry_id = $data['registry_id'];
-            if ($registry_id && $product_id ) {
-                $collection = Mage::getModel('veeble_giftregistry/item')->getCollection()
-                    ->addFieldToFilter("product_id", $product_id)
-                    ->addFieldToFilter("registry_id", $registry_id);
-                foreach ($collection as $item) {
-                    $item->delete();
-                }
+            $item_id = $this->getRequest()->getParams('item_id');
+
+            if ($item_id) {
+                $item = Mage::getModel('veeble_giftregistry/item')->load($item_id);
+                $item->delete();
             }
         }catch (Exception $e) {
             Mage::getSingleton('core/session')->addError($e->getMessage());
-            $this->_redirect('*/*/');
+            $this->_redirectUrl($this->_getRefererUrl());
         }
-        $this->_redirect('*/*/');
+        $this->_redirectUrl($this->_getRefererUrl());
     }
 
     public function editAction()

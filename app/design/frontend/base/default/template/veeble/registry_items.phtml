@@ -13,7 +13,7 @@ $collection = $this->getItems($registry);
         <li>
             <h3><?php echo $item->getName(); ?></h3>
             <?php if($helper->isRegistryOwner($registry->getCustomerId())): ?>
-                <a href="<?php echo $this->getUrl('giftregistry/item/delete', array('_query' => array('product_id' => $item->getId(), 'entity_id' => $registry->getEntityId() ))) ?>">
+                <a href="<?php echo $this->getUrl('giftregistry/item/delete', array('_query' => array('item_id' => $item->getItemId() ))) ?>">
                     <?php echo $this->__('Delete Product') ?>
                 </a>
             <?php endif;?>
