@@ -28,7 +28,7 @@ class Veeble_Giftregistry_IndexController extends Mage_Core_Controller_Front_Act
     {
         try {
             $registryId = $this->getRequest()->getParam('registry_id');
-            if ($registryId && $this->getRequest()->getPost()) {
+            if ($registryId && $this->getRequest()->isPost()) {
                 if ($registry = Mage::getModel('veeble_giftregistry/entity')->load($registryId)) {
                     $registry->delete();
                     $successMessage = Mage::helper('veeble_giftregistry')->__('Gift registry has been succesfully deleted.');
@@ -63,7 +63,8 @@ class Veeble_Giftregistry_IndexController extends Mage_Core_Controller_Front_Act
             $data = $this->getRequest()->getParams();
             $registry = Mage::getModel('veeble_giftregistry/entity');
             $customer = Mage::getSingleton('customer/session')->getCustomer();
-            if ($this->getRequest()->getPost() && !empty($data)) {
+            if ($this->getRequest()->isPost() && !empty($data)) {
+                $data['event_date'] = date('Y-m-d');
                 $registry->updateRegistryData($customer, $data);
                 $registry->save();
                 $successMessage = Mage::helper('veeble_giftregistry')->__('Registry Successfully Created');

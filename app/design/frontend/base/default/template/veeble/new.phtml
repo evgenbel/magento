@@ -9,7 +9,7 @@
                     <?php foreach ($helper->getEventTypes() as $type):
                         ?>
                         <option id="<?php echo $type->getTypeId(); ?>"
-                                value="<?php echo $type->getCode(); ?>">
+                                value="<?php echo $type->getTypeId(); ?>">
                             <?php echo $type->getName(); ?>
                         </option>
                     <?php endforeach; ?>

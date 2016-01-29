@@ -6,7 +6,7 @@
  * Date: 28.01.2016
  * Time: 22:13
  */
-class Veeble_Giftregistry_Block_list extends Mage_Core_Block_Template
+class Veeble_Giftregistry_Block_List extends Mage_Core_Block_Template
 {
     public function getCustomerRegistries()
     {
@@ -14,8 +14,7 @@ class Veeble_Giftregistry_Block_list extends Mage_Core_Block_Template
         $currentCustomer = Mage::getSingleton('customer/session')->getCustomer();
         if ($currentCustomer) {
             $collection = Mage::getModel('veeble_giftregistry/entity')->getCollection()
-                ->addFieldToFilter('customer_id',
-                    $currentCustomer->getId());
+                ->addFieldToFilter('customer_id', $currentCustomer->getId());
         }
         return $collection;
     }
