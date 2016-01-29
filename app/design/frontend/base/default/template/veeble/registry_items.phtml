@@ -1,0 +1,23 @@
+<?php
+$registry = Mage::registry('loaded_registry');
+$collection = $this->getItems($registry);
+?>
+
+<?php if (!$collection->count()): ?>
+    <h2><?php echo $this->__('You have no items in the registry.') ?></h2>
+<?php else: ?>
+    <h2><?php echo $this->__('Products:') ?></h2>
+    <ul>
+        <?php $helper = Mage::helper('veeble_giftregistry');?>
+    <?php foreach($collection as $item):?>
+        <li>
+            <h3><?php echo $item->getName(); ?></h3>
+            <?php if($helper->isRegistryOwner($registry->getCustomerId())): ?>
+                <a href="<?php echo $this->getUrl('giftregistry/item/delete', array('_query' => array('product_id' => $item->getId(), 'entity_id' => $registry->getEntityId() ))) ?>">
+                    <?php echo $this->__('Delete Product') ?>
+                </a>
+            <?php endif;?>
+        </li>
+    <?php endforeach;?>
+    </ul>
+<?php endif; ?>

@@ -17,12 +17,16 @@
                    template="veeble/edit.phtml" as="giftregistry_edit"/>
         </reference>
     </veeble_giftregistry_index_edit>
+
     <veeble_giftregistry_view_view>
         <reference name="content">
             <block name="giftregistry.view" type="core/template"
                    template="veeble/view.phtml" as="giftregistry_view"/>
+
+            <block type="veeble_giftregistry/item" name="registry.listitem" as="registry_listitem" template="veeble/registry_items.phtml" />
         </reference>
     </veeble_giftregistry_view_view>
+
     <veeble_giftregistry_search_index>
         <reference name="content">
             <block name="giftregistry.search" type="core/template"
@@ -34,4 +38,12 @@
             <block name="giftregistry.results" type="veeble_giftregistry/list" template="veeble/list.phtml"/>
         </reference>
     </veeble_giftregistry_search_results>
+
+    <catalog_product_view translate="label">
+        <reference name="content">
+            <reference name="product.info">
+                <block type="veeble_giftregistry/add" name="registry.add" as="registry_add" template="veeble/add_to_registry.phtml" />
+            </reference>
+        </reference>
+    </catalog_product_view>
 </layout>
