@@ -8,6 +8,9 @@
 
 class Veeble_Giftregistry_Model_Entity extends Mage_Core_Model_Abstract
 {
+    CONST DISABLE = 0;
+    CONST ENABLE = 1;
+
     public function __construct()
     {
         $this->_init('veeble_giftregistry/entity');
@@ -32,5 +35,25 @@ class Veeble_Giftregistry_Model_Entity extends Mage_Core_Model_Abstract
             Mage::logException($e);
         }
         return $this;
+    }
+
+    public function getStatuses(){
+        return array(
+            self::DISABLE   =>  Mage::helper('veeble_giftregistry')->__('Disable'),
+            self::ENABLE   =>  Mage::helper('veeble_giftregistry')->__('Enable'),
+        );
+    }
+
+    public function enable(){
+        $this->setStatus(self::ENABLE);
+    }
+
+    public function disable(){
+        $this->setStatus(self::DISABLE);
+    }
+
+    public function getId()
+    {
+        return $this->getEntityId();
     }
 }

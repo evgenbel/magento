@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <veeble_giftregistry module="veeble_giftregistry">
+            <title>Gift Registry</title>
+            <sort_order>71</sort_order>
+            <children>
+                <items module="veeble_giftregistry">
+                    <title>Manage Registries</title>
+                    <sort_order>0</sort_order>
+                    <action>adminhtml/giftregistry/index</action>
+                </items>
+            </children>
+        </veeble_giftregistry>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <giftregistry translate="title" module="veeble_giftregistry">
+                        <title>Gift Registry</title>
+                        <sort_order>300</sort_order>
+                        <children>
+                            <items translate="title" module="veeble_giftregistry">
+                                <title>Manage Registries</title>
+                                <sort_order>0</sort_order>
+                            </items>
+                        </children>
+                    </giftregistry>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

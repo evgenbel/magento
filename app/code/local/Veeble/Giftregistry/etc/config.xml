@@ -58,6 +58,7 @@
             </veeble_giftregistry_read>
         </resources>
     </global>
+
     <frontend>
         <routers>
             <veeble_giftregistry>
@@ -77,4 +78,26 @@
             </updates>
         </layout>
     </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <veeble_giftregistry before="Mage_Adminhtml">Veeble_Giftregistry_Adminhtml</veeble_giftregistry>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <veeble_giftregistry module="veeble_giftregistry">
+                    <file>giftregistry.xml</file>
+                </veeble_giftregistry>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

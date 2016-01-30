@@ -13,4 +13,13 @@ class Veeble_Giftregistry_Model_Type extends Mage_Core_Model_Abstract
         $this->_init('veeble_giftregistry/type');
         parent::_construct();
     }
+
+    public function getOptionArray()
+    {
+        $result = array();
+        foreach($this->getCollection() as $item){
+            $result[$item->getTypeId()] = $item->getName();
+        }
+        return $result;
+    }
 }

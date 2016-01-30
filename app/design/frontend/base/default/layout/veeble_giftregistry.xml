@@ -1,4 +1,16 @@
 <layout version="0.1.0">
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title">
+                <label>My gifts</label>
+                <url>giftregistry</url>
+                <title>My gifts</title>
+                <prepare>true</prepare>
+                <position>2</position>
+            </action>
+        </reference>
+    </default>
+
     <veeble_giftregistry_index_index>
         <reference name="content">
             <block name="giftregistry.list" type="veeble_giftregistry/list"
