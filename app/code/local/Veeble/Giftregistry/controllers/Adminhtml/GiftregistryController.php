@@ -47,13 +47,13 @@ class Veeble_Giftregistry_Adminhtml_GiftregistryController extends Mage_Adminhtm
                 $id = $this->getRequest()->getParam('id');
                 if ($data && $id) {
                     $registry = Mage::getModel('veeble_giftregistry/entity')->load($id);
-                    $registry->setData($data);
+                    $registry->addData($data);
                     $registry->save();
                     $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 }
             } catch (Exception $e) {
                 $this->_getSession()->addError(
-                    Mage::helper('veeble_giftregistry')->__('An error occurred while saving the registry data. Please review the log and try again.' . $e->getMessage())
+                    Mage::helper('veeble_giftregistry')->__('An error occurred while saving the registry data. Please review the log and try again.' . $this->getRequest()->getParam('id'))
                 );
                 Mage::logException($e);
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
