@@ -27,6 +27,19 @@ class Veeble_Giftregistry_Block_Adminhtml_Registries_Grid extends
 
     protected function _prepareColumns()
     {
+        $customers = array();
+        $helper = Mage::helper('customer');
+        foreach(Mage::getModel('customer/customer')->getCollection()->addAttributeToSelect(array('firstname', 'lastname')) as $item){
+            $customers[$item->getId()] = $helper->getFullCustomerName($item);
+        }
+
+        $this->addColumn('customer_id', array(
+            'header' => Mage::helper('veeble_giftregistry')->__('Customer'),
+            'index' => 'customer_id',
+            'sortable' => false,
+            'type'  => 'options',
+            'options' => $customers,
+        ));
         $this->addColumn('entity_id', array(
             'header' => Mage::helper('veeble_giftregistry')->__('Id'),
             'width' => 50,

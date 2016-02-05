@@ -50,10 +50,15 @@ class Veeble_Giftregistry_Adminhtml_GiftregistryController extends Mage_Adminhtm
                     $registry->addData($data);
                     $registry->save();
                     $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                }elseif($data){
+                    $registry = Mage::getModel('veeble_giftregistry/entity')->load($id);
+                    $registry->setData($data);
+                    $registry->save();
+                    $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
                 }
             } catch (Exception $e) {
                 $this->_getSession()->addError(
-                    Mage::helper('veeble_giftregistry')->__('An error occurred while saving the registry data. Please review the log and try again.' . $this->getRequest()->getParam('id'))
+                    Mage::helper('veeble_giftregistry')->__('An error occurred while saving the registry data. Please review the log and try again.')
                 );
                 Mage::logException($e);
                 $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
@@ -65,9 +70,11 @@ class Veeble_Giftregistry_Adminhtml_GiftregistryController extends Mage_Adminhtm
 
     public function newAction()
     {
+        $registry = Mage::getModel('veeble_giftregistry/entity');
+        Mage::register('registry_data', $registry);
         $this->loadLayout();
+        $this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
         $this->renderLayout();
-        return $this;
     }
 
     public function massDeleteAction()
@@ -76,8 +83,7 @@ class Veeble_Giftregistry_Adminhtml_GiftregistryController extends Mage_Adminhtm
         getRequest()->getParam('registries');
         if(!is_array($registryIds)) {
             Mage::getSingleton('adminhtml/session')->
-            addError(Mage::helper('veeble_giftregistry')->
-                __('Please select one or more registries.'));
+            addError(Mage::helper('veeble_giftregistry')->__('Please select one or more registries.'));
         } else {
             try {
                 $registry = Mage::getModel('veeble_giftregistry/entity');

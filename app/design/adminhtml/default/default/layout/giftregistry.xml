@@ -26,4 +26,11 @@
                    name="new_registry_tabs" />
         </reference>
     </adminhtml_giftregistry_edit>
+
+    <adminhtml_giftregistry_new>
+        <reference name="content">
+            <block type="veeble_giftregistry/adminhtml_registries_edit"
+                   name="new_registry_tabs" />
+        </reference>
+    </adminhtml_giftregistry_new>
 </layout>
