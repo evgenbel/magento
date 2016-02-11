@@ -17,6 +17,57 @@ class Veeble_Giftregistry_IndexController extends Mage_Core_Controller_Front_Act
         }
     }
 
+    public function testAction()
+    {
+        $params = array(
+            'siteUrl' => 'http://m2.magento192.invbl.ru/oauth',
+            'requestTokenUrl' => 'http://m2.magento192.invbl.ru/oauth/initiate',
+            'accessTokenUrl' => 'http://m2.magento192.invbl.ru/oauth/token',
+            'authorizeUrl' => 'http://m2.magento192.invbl.ru/admin/oAuth_authorize',//This URL is used only if we authenticate as Admin user type
+            'consumerKey' => '618ea092fdd7fc3710f968f58f0b2014',//Consumer key registered in server administration
+            'consumerSecret' => '52dcbcbe68cae8373124b286a4e106b1',//Consumer secret registered in server administration
+            'callbackUrl' => 'http://m2.magento192.invbl.ru/restconnect/test/callback',//Url of callback action below
+        );
+
+        // Initiate oAuth consumer with above parameters
+        $consumer = new Zend_Oauth_Consumer($params);
+        // Get request token
+        $requestToken = $consumer->getRequestToken();
+        // Get session
+        $session = Mage::getSingleton('core/session');
+        // Save serialized request token object in session for later use
+        $session->setRequestToken(serialize($requestToken));
+        // Redirect to authorize URL
+        $consumer->redirect();
+        exit;
+    }
+
+    public function test2Action(){
+        //oAuth parameters
+        $params = array(
+            'siteUrl' => 'http:///m2.magento192.invbl.ru/oauth',
+            'requestTokenUrl' => 'http:///m2.magento192.invbl.ru/oauth/initiate',
+            'accessTokenUrl' => 'http:///m2.magento192.invbl.ru/oauth/token',
+            'consumerKey' => '618ea092fdd7fc3710f968f58f0b2014',
+            'consumerSecret' => '52dcbcbe68cae8373124b286a4e106b1'
+        );
+
+        // Get session
+        $session = Mage::getSingleton('core/session');
+        // Read and unserialize request token from session
+        $requestToken = unserialize($session->getRequestToken());
+        // Initiate oAuth consumer
+        $consumer = new Zend_Oauth_Consumer($params);
+
+        $acessToken = $consumer->getAccessToken($_GET, $requestToken);
+        $restClient = $acessToken->getHttpClient($params);
+        $restClient->setUri('http://m2.magento192.invbl.ru/api/rest/products');
+        $restClient->setHeaders('Accept', 'application/json');
+        $restClient->setMethod(Zend_Http_Client::GET);
+        $response = $restClient->request();
+        var_dump($response);
+    }
+
     public function indexAction()
     {
         $this->loadLayout();

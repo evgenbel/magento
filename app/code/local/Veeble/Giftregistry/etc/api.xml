@@ -3,7 +3,7 @@
     <api>
         <resources>
             <giftregistry_registry translate="title" module="veeble_giftregistry">
-                <model>mdg_giftregistry/api</model>
+                <model>veeble_giftregistry/api</model>
                 <title>Veeble Giftregistry Registry functions</title>
                 <methods>
                     <list translate="title" module="veeble_giftregistry">
@@ -57,10 +57,8 @@
                     </registry>
                     <item translate="title" module="veeble_giftregistry">
                         <title>Veeble Gift Registry Item</title>
-                        <list translate="title" module="mdg_giftregistry">
-                            <title>List Available Items inside a
-                                registry
-                            </title>
+                        <list translate="title" module="veeble_giftregistry">
+                            <title>List Available Items inside a registry</title>
                         </list>
                         <info translate="title" module="veeble_giftregistry">
                             <title>Retrieve registry item data</title>
