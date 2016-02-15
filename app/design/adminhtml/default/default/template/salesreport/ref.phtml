@@ -1,0 +1,49 @@
+
+    <!--div id="change-order-email" style="display:none">
+        <form action="<?php echo $this->getEditFormUrl(); ?>" method="post" id="edit_form">
+            <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+            <input type="hidden" name="token" value="<?php echo $this->getToken(); ?>" />
+            <table cellspacing="4" class="form-list">
+                <tr>
+                    <td>Field</td>
+                    <td><input class="required-entry validate-email" /></td>
+                </tr>
+            </table>
+        </form>
+        <button onclick="editForm.submit()">Change</button>
+    </div>
+    <script type="text/javascript">
+        editForm = new varienForm('edit_form');
+    </script-->
+
+    <?php $_order = $this->getOrder() ?>
+    <div class="box-left">
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-account"><?php echo Mage::helper('sales')->__('Ref number') ?></h4>
+            </div>
+            <div class="fieldset">
+                <table cellspacing="0" class="form-list">
+                    <tr>
+                        <td style="width:20%" class="label"><strong>
+                                <?php echo Mage::helper('sales')->__('Ref No') ?></strong></td>
+                        <td class="value">
+                            <form action="<?php echo $this->getFormUrl(); ?>" method="post" id="edit_form">
+                                <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+                                <input type="hidden" name="token" value="<?php echo $this->getToken(); ?>" />
+                                <input name="ref" value="<?php echo $this->getOrder()->getRef(); ?>" />
+
+                            </form>
+                            <button onclick="editForm.submit()">Change</button>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script type="text/javascript">
+            editForm = new varienForm('edit_form');
+        </script>
+    </div>
+    <div class="clear"></div>
+
