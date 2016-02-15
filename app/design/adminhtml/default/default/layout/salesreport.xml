@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout>
+	<salesreport_adminhtml_sales_reportmanage>
+        <update handle="salesreport_sales_reportmanage"/>
+        <reference name="content">
+            <block type="adminhtml/template" name="sales" template="salesreport/reportmanage.phtml"/>
+        </reference>
+    </salesreport_adminhtml_sales_reportmanage>
+
+    <adminhtml_sales_order_view>
+        <reference name="order_info">
+            <action method='setTemplate'>
+                <template>salesreport/order/info.phtml</template>
+            </action>
+            <block type="adminhtml/sales_order_view_info" name="order_info2" template="sales/order/view/info.phtml"></block>
+            <block type="salesreport/adminhtml_order_create_ref" name="ref_input_link" template='salesreport/ref.phtml'/>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

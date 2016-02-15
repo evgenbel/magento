@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cybernetikz_Salesreport>
+            <version>0.1.4</version>
+        </Cybernetikz_Salesreport>
+    </modules>
+    
+    <global>
+		<models>
+			<salesreport>
+				<class>Cybernetikz_Salesreport_Model</class>
+			</salesreport>  
+		</models>
+        <blocks>
+            <salesreport>
+                <class>Cybernetikz_Salesreport_Block</class>
+            </salesreport>
+        </blocks>
+        <helpers>
+            <salesreport>
+                <class>Cybernetikz_Salesreport_Helper</class>
+            </salesreport>  
+        </helpers>
+        <resources>
+            <salesreport_setup>
+                <setup>
+                    <module>Cybernetikz_Salesreport</module>
+                    <class>Cybernetikz_Salesreport_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </salesreport_setup>
+            <salesreport_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </salesreport_write>
+            <salesreport_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </salesreport_read>
+        </resources>
+    </global>
+    
+    <admin>
+        <routers>
+            <salesreport>
+                <use>admin</use>
+                <args>
+                    <module>Cybernetikz_Salesreport</module>
+                    <frontName>salesreport</frontName>
+                </args>
+            </salesreport>
+
+            <adminhtml>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <salesreport after="Mage_Adminhtml_Sales">Cybernetikz_Salesreport_Adminhtml</salesreport>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    <adminhtml>		        
+        <layout>
+            <updates>
+                <salesreport>
+                    <file>salesreport.xml</file>
+                </salesreport>
+            </updates>
+        </layout>
+    </adminhtml>
+	
+	<default>
+		<salesreports>
+			<reportsetting>
+				<report_name>CustomSalesReport</report_name>
+				<report_address>shipping</report_address>
+			</reportsetting>
+		</salesreports>
+	</default>
+</config>

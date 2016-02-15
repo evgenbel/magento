@@ -23,10 +23,10 @@ class Veeble_Giftregistry_IndexController extends Mage_Core_Controller_Front_Act
             'siteUrl' => 'http://m2.magento192.invbl.ru/oauth',
             'requestTokenUrl' => 'http://m2.magento192.invbl.ru/oauth/initiate',
             'accessTokenUrl' => 'http://m2.magento192.invbl.ru/oauth/token',
-            'authorizeUrl' => 'http://m2.magento192.invbl.ru/admin/oAuth_authorize',//This URL is used only if we authenticate as Admin user type
+            'authorizeUrl' => 'http://m2.magento192.invbl.ru/admin/',//This URL is used only if we authenticate as Admin user type
             'consumerKey' => '618ea092fdd7fc3710f968f58f0b2014',//Consumer key registered in server administration
             'consumerSecret' => '52dcbcbe68cae8373124b286a4e106b1',//Consumer secret registered in server administration
-            'callbackUrl' => 'http://m2.magento192.invbl.ru/restconnect/test/callback',//Url of callback action below
+            'callbackUrl' => 'http://m2.magento192.invbl.ru/giftregistry/index/test2',//Url of callback action below
         );
 
         // Initiate oAuth consumer with above parameters
@@ -45,9 +45,9 @@ class Veeble_Giftregistry_IndexController extends Mage_Core_Controller_Front_Act
     public function test2Action(){
         //oAuth parameters
         $params = array(
-            'siteUrl' => 'http:///m2.magento192.invbl.ru/oauth',
-            'requestTokenUrl' => 'http:///m2.magento192.invbl.ru/oauth/initiate',
-            'accessTokenUrl' => 'http:///m2.magento192.invbl.ru/oauth/token',
+            'siteUrl' => 'http://m2.magento192.invbl.ru/oauth',
+            'requestTokenUrl' => 'http://m2.magento192.invbl.ru/oauth/initiate',
+            'accessTokenUrl' => 'http://m2.magento192.invbl.ru/oauth/token',
             'consumerKey' => '618ea092fdd7fc3710f968f58f0b2014',
             'consumerSecret' => '52dcbcbe68cae8373124b286a4e106b1'
         );
@@ -65,7 +65,8 @@ class Veeble_Giftregistry_IndexController extends Mage_Core_Controller_Front_Act
         $restClient->setHeaders('Accept', 'application/json');
         $restClient->setMethod(Zend_Http_Client::GET);
         $response = $restClient->request();
-        var_dump($response);
+        $body = $response->getBody();
+        var_dump($body);
     }
 
     public function indexAction()
