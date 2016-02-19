@@ -25,7 +25,7 @@ public function indexAction()
 			$orserstatus = "";
 			$reportaddress = Mage::helper('salesreport')->getReportAddress();
 			$addtess_title = ($reportaddress=="billing")?"Billing":"Shipping";
-			$orders_csv_row ="Period,Order Id,Item Name,Qty,Unit Price,Row Total,$addtess_title Name,Email,Street Address,City,State,Postcode,Country";
+			$orders_csv_row ="Period,Order Id,Invoice, AWB, Ref,Item Name,Qty,Unit Price,Row Total, Total Shipment Price,$addtess_title Name, Telephone, Email,Street Address,City,State,Postcode,Country";
 			$orders_csv_row.="\n";
 			
 			$filter_type = $_REQUEST['filter_type'];
@@ -68,7 +68,32 @@ public function indexAction()
 				
 				$myOrder = Mage::getModel('sales/order');
 				$myOrder->load($_orderId);
-				
+
+				$phone = $myOrder->getShippingAddress()->getTelephone();
+				$ref = $myOrder->getRef();
+				$shipping_cost = $myOrder->getShippingAmount();
+
+				$shipmentId = array();
+				$shipmentCollection = Mage::getResourceModel('sales/order_shipment_collection')
+					->setOrderFilter($myOrder)
+					->load();
+				foreach ($shipmentCollection as $shipment){
+					// This will give me the shipment IncrementId, but not the actual tracking information.
+					foreach($shipment->getAllTracks() as $tracknum)
+					{
+						$shipmentId[] = $tracknum->getNumber();
+					}
+
+				}
+				$shipmentId = implode(",", $shipmentId);
+
+				if ($myOrder->hasInvoices()) {
+					$invIncrementIDs = array();
+					foreach ($myOrder->getInvoiceCollection() as $inv) {
+						$invIncrementIDs[] = $inv->getIncrementId();
+					}
+				}
+
 				//Some Random Fields
 				if($reportaddress=="billing"){
 									
@@ -175,8 +200,8 @@ public function indexAction()
 						$customer_email=$myOrder->getCustomerEmail();
 					}					
 
-					$datarow =  array(date("d/m/Y",strtotime($myOrder->getCreatedAt())), $myOrder->getIncrementId(), utf8_decode($item->getName()), $itemorderqty, utf8_decode($net_price),$subtotal,$name,$customer_email,$address,$city,$region,$postcode,$country);
-								
+					$datarow =  array(date("d/m/Y",strtotime($myOrder->getCreatedAt())), $myOrder->getIncrementId(), implode(",", $invIncrementIDs), $shipmentId, $ref, utf8_decode($item->getName()), $itemorderqty, utf8_decode($net_price),$subtotal,$shipping_cost,$name,$phone,$customer_email,$address,$city,$region,$postcode,$country);
+
 					$line = "";
 					$comma = "";
 					foreach($datarow as $titlename) {

