@@ -18,7 +18,10 @@ class Mdg_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
      */
     public function registryList()
     {
-        $registryList = Mage::getModel('mdg_giftregistry/entity')->getCollection();
+        $customerId = 1;
+        $registryList = Mage::getModel('mdg_giftregistry/entity')
+            ->getCollection()
+            ->addFieldToFilter('customer_id', $customerId);
         $this->assertEquals(2, $registryList->count());
     }
 }
