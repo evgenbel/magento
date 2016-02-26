@@ -6,7 +6,7 @@
  * Time: 16:45
  */
 
-class Mdg_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
+class Veeble_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
 {
     /**
      * Listing available registries
@@ -19,7 +19,7 @@ class Mdg_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
     public function registryList()
     {
         $customerId = 1;
-        $registryList = Mage::getModel('mdg_giftregistry/entity')
+        $registryList = Mage::getModel('veeble_giftregistry/entity')
             ->getCollection()
             ->addFieldToFilter('customer_id', $customerId);
         $this->assertEquals(2, $registryList->count());
