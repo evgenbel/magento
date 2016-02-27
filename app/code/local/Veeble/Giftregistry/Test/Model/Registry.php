@@ -12,9 +12,8 @@ class Veeble_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
      * Listing available registries
      *
      * @test
-     * @loadFixture
+     * @loadFixture registryList.yaml
      * @doNotIndexAll
-     * @dataProvider dataProvider
      */
     public function registryList()
     {
