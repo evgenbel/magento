@@ -37,7 +37,8 @@ class Veeble_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
         $giftTable =  Mage::getSingleton('core/resource')->getTableName('veeble_giftregistry/entity');
         $registryItems = Mage::getModel('veeble_giftregistry/item')
             ->getCollection();
-        $registryItems->getSelect()->join(array("g"=>$giftTable), "`main_table`.registry_id=g.entity_id AND g.customer_id=" . $customerId, array());
+        $registryItems->getSelect()->join(array("g"=>$giftTable), "`main_table`.registry_id=g.entity_id", array())
+        ->where("g.customer_id=?", $customerId);
 
         $this->assertEquals(
             3,
