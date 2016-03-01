@@ -80,14 +80,7 @@ class EcomDev_PHPUnit_Model_Fixture_Processor_Scope
         try {
             $scopeModel->isObjectNew(true);
             $scopeModel->save();
-            if ($type=='store'){
-                print_r($scopeModel->getData());
-            }
         } catch (Exception $e) {
-            if ($type=='store') {
-                echo $e->getMessage();
-                print_r($row);
-            }
             Mage::logException($e);
             // Skip duplicated key violation, since it might be a problem
             // of previous run with fatal error

@@ -17,14 +17,6 @@ class Veeble_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
      */
     public function registryList()
     {
-        $registryList = Mage::getModel('core/store')
-            ->getCollection();
-        foreach($registryList as $val){
-            print_r($val->getId());
-        }
-        /*$registryList = Mage::getModel('veeble_giftregistry/entity')
-            ->getCollection();
-        print_r((string)$registryList->getSelect());*/
         $customerId = 1;
         $registryList = Mage::getModel('veeble_giftregistry/entity')
             ->getCollection()
