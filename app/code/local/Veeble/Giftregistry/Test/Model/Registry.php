@@ -23,4 +23,25 @@ class Veeble_Giftregistry_Test_Model_Registry extends EcomDev_PHPUnit_Test_Case
             ->addFieldToFilter('customer_id', $customerId);
         $this->assertEquals(2, $registryList->count());
     }
+
+    /**
+     * Listing available items for a specific registry
+     *
+     * @test1
+     * @loadFixture registryItemsList.yaml
+     * @doNotIndexAll
+     */
+    public function registryItemsList()
+    {
+        $customerId = 1;
+        $giftTable =  Mage::getSingleton('core/resource')->getTableName('veeble_giftregistry/entity');
+        $registryItems = Mage::getModel('veeble_giftregistry/item')
+            ->getCollection();
+        $registryItems->getSelect()->join(array("g"=>$giftTable), "`main_table`.registry_id=g.entity_id AND g.customer_id=" . $customerId, array());
+
+        $this->assertEquals(
+            3,
+            $registryItems->count()
+        );
+    }
 }
