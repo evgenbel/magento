@@ -4,7 +4,7 @@ $collection = $this->getCustomerRegistryCollection();
 
 <?php if($collection->count() > 0): ?>
     <?php $helper = Mage::helper('veeble_giftregistry'); ?>
-    <form action="<?php echo $this->getUrl('giftregistry/item/add/') ?>" method="post" id="form-validate">
+    <form action="<?php echo $this->getUrl('giftregistry/item/add/') ?>" method="post" id="product_registry_form">
         <fieldset>
             <select id="registry_id" name="registry_id">
                 <?php foreach($collection as $registry): ?>

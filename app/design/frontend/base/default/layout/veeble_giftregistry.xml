@@ -5,8 +5,8 @@
                 <label>My gifts</label>
                 <url>giftregistry</url>
                 <title>My gifts</title>
-                <prepare>true</prepare>
-                <position>2</position>
+                <prepare/>
+                <position>0</position>
             </action>
         </reference>
     </default>
