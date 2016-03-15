@@ -16,12 +16,15 @@ if(isset($totals['tax']) && $totals['tax']->getValue()) {
 }
 ?>
 <div class="opc-wrapper-opc design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
-    <div class="page-title checkout-title">
-        <h1><?php echo $this->__('Checkout')?></h1>
-    </div>
     <div class="row">
     <div class="col-lg-9 col-xs-12 col-sm-9">
-	<div class="opc-menu">	
+	<div class="checkout-pg-logo">
+	<a href="<?php echo Mage::getUrl(); ?>"><img src="<?php echo $this->getSkinUrl('css/iwd/opc/images/secure-checkout-logo.png'); ?>" alt="Badassglass"/></a>
+	</div>
+	<div class="page-title checkout-title">
+        <h1><img src="<?php echo $this->getSkinUrl('css/iwd/opc/images/secure-checkout-logo.png'); ?>" /><?php echo $this->__('Secure Checkout')?></h1>
+    </div>
+	<div class="opc-menu">
 	    <?php echo $this->getChildHtml('paypal.button')?>	            
         <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
     		<?php echo $this->getChildHtml('login');?>	
@@ -207,3 +210,4 @@ if(isset($totals['tax']) && $totals['tax']->getValue()) {
 			return re.test(email);
 		}
 	</script>
+	</div>
