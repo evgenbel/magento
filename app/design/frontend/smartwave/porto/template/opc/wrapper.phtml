@@ -19,11 +19,17 @@ if(isset($totals['tax']) && $totals['tax']->getValue()) {
     <div class="row">
     <div class="col-lg-9 col-xs-12 col-sm-9">
 	<div class="checkout-pg-logo">
-	<a href="<?php echo Mage::getUrl(); ?>"><img src="<?php echo $this->getSkinUrl('css/iwd/opc/images/secure-checkout-logo.png'); ?>" alt="Badassglass"/></a>
+	<a href="<?php echo Mage::getUrl(); ?>"><img src="<?php echo $this->getSkinUrl('css/iwd/opc/images/checkout-logo.png'); ?>" alt="Badassglass"/></a>
 	</div>
 	<div class="page-title checkout-title">
         <h1><img src="<?php echo $this->getSkinUrl('css/iwd/opc/images/secure-checkout-logo.png'); ?>" /><?php echo $this->__('Secure Checkout')?></h1>
     </div>
+    <?php $customerSession = Mage::getSingleton("customer/session");
+	if(!$customerSession->isLoggedIn()) { ?>
+	<div class="ng-scope">
+		<div class="userOptions">Already a registered user? <span class="coLogin" onclick="setLocation('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'customer/account/login'; ?>')">Log in &gt;&gt;</span></div>
+	</div>
+	<?php } ?>
 	<div class="opc-menu">
 	    <?php echo $this->getChildHtml('paypal.button')?>	            
         <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
@@ -53,7 +59,7 @@ if(isset($totals['tax']) && $totals['tax']->getValue()) {
     <div class="opc-col-center" style="display: block !important;">
        <?php if (!$this->getOnepage()->getQuote()->isVirtual()):?>
     	<div class="shipping-block">
-        	<div class="block-title"><?php echo $this->__('Shipping Method')?></div>
+        	<h3 style="margin-left:20px;"><?php echo $this->__('Shipping Methods')?></h3>
         	<div id="shipping-block-methods">
 				<?php echo $this->getChildHtml('shipping_method');//$this->_getShippingMethodsHtml();?>
 			</div>
@@ -98,7 +104,10 @@ if(isset($totals['tax']) && $totals['tax']->getValue()) {
 		      <h5 class="grand_total"><?php echo $this->__('Grand Total')?><?php echo Mage::helper('opc')->getGrandTotal()?></h5>
 		      <?php echo $this->getChildHtml('agreements')?>
 		      <?php echo $this->getChildHtml('opc.newsletters');?>
-		      <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="button btn-checkout opc-btn-checkout"><span class="btn-img"><span><?php echo $this->__('Place Order Now') ?></span></span></button>
+		      <button type="button" title="<?php echo $this->__('Place Order') ?>" class="button btn-checkout opc-btn-checkout"><span class="btn-img"><span><?php echo $this->__('Place Order') ?></span></span></button>
+		</div>
+		<div class="coPlaceOrderMsg">
+			Please verify all information in your order and make any necessary changes. Once you click the "Place Order" button your order will be submitted.
 		</div>
     </div>
     </div>
@@ -151,7 +160,45 @@ if(isset($totals['tax']) && $totals['tax']->getValue()) {
 		</div>
 	</div>
     </div>
+<div class="coComfortCopy">
+	<div class="coPayText">We accept the following:</div>
+	<div class="coCreditImages"></div>
+	<div class="coPayText">Feel secure with your Badassglass Purchase:
+	</div>
+	<div class="coIconCont">
+		<div class="coComfortLock coComfortIcon"></div>
+		<div class="coComfortText">Secure payments with SSL</div>
+	</div>
+	<div class="coIconCont">
+		<div class="coComfortCheck coComfortIcon"></div>
+		<div class="coComfortText">Money Back Guarantee</div>
+	</div>
+	<div class="coIconCont">
+		<div class="coComfortReturn coComfortIcon"></div>
+		<div class="coComfortText">Hassle-Free Returns</div>
+	</div>
+	<div class="coIconCont">
+		<div class="coComfortPhone coComfortIcon"></div>
+		<div class="coComfortText">Need Help? <span class="disableClick">877-885-8836</span></div>
+	</div>
+</div>
 		</div>
+<div class="coFooter ng-scope">
+	<div class="coFooterWrap">
+		<div class="coFooterLeft">
+			&copy;2016  Badassglass Commerce, LLC. All Rights Reserved.
+		</div>
+		<div class="coFooterRight">
+			<span class="frLinks">
+	        	<a target="_blank" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'terms-of-use'; ?>" title="">Terms of Use</a>  |
+	        	<a target="_blank" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'privacy-policy'; ?>" title="">Privacy Policy</a>
+		    </span>
+
+		    	<span class="frPhone">Call Toll-Free <span id="sub_footer_number"><b>877-885-8836</b></span></span>
+
+		</div>
+	</div>
+</div>
     </div>
 </div>
 <script>

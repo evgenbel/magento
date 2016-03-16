@@ -3817,6 +3817,24 @@ ol#products-list .bottom-home-dailydeal ul.time-left li span.text-time{font-size
     background-image: url(../images/global-sprite.png) ;
 }
 
+.watch-video-link{
+    background: url(../images/global-sprite.png) no-repeat;
+    background-position: -200px -225px;
+    width:95px;
+    display: block;
+    text-indent: -9999px;
+    height: 18px;
+    margin:10px auto;
+}
+
+.youtube{
+    margin:10px auto;
+    text-align: center;
+    width:853px;
+    height:480px;
+}
+
+
 @media(min-width: 360px){
 	.checkout-onepage-index .col-main.col-sm-9 .opc .section.allow.active .step-title h2{
 		font-size:16px;
@@ -3840,6 +3858,10 @@ ol#products-list .bottom-home-dailydeal ul.time-left li span.text-time{font-size
 
 
 @media  (max-width: 480px) {
+    .youtube{
+        width:340px;
+        height:230px;
+    }
     .header-container.type4 .header > .logo {max-width: 195px;}
     .header .logo img {width: 200px;}
     .header-container .header{display:none !important;}
