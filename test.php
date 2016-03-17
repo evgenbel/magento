@@ -1,4 +1,6 @@
 <?php
+phpinfo();
+exit;
 /**
  * Created by PhpStorm.
  * User: Evgenii

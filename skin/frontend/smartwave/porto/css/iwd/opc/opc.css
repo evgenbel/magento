@@ -620,6 +620,9 @@ float:right;margin-left:16px;}
     text-transform: uppercase;
     width: 100%;
 }
+.opc-index-index .form-list input.input-text[type=password]{
+    text-transform: none;
+}
 .opc-index-index .opc-review-actions .grand_total{
 	display:none;
 }

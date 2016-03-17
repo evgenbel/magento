@@ -397,15 +397,6 @@ if($enable_addtocart_sticky){
     <div class="product-collateral">
         <?php echo $this->getChildHtml('product_additional_data'); ?>
     </div>
-
-    <a name="youtube" style="margin-top:-100px;display: block;"></a>
-    <div class="youtube" style="margin-top:110px;">
-    <?php
-        if (!empty($youtube)){
-            echo $youtube;
-        }
-    ?>
-    </div>
     <?php echo $this->getChildHtml('upsell_products'); ?>
 </div>
 <script type="text/javascript">
