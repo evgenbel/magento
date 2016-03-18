@@ -550,19 +550,19 @@ float:right;margin-left:16px;}
 
 /*------------------------------------added by chirag 20160308--------------------------------------------------*/
 .opc-index-index .main.container {
-    width: 922px;
+    width: 1150px;
 }
 .opc-index-index .col-lg-9 {
-    float: none;
+    #float: none;
     margin: 0 auto;
     padding: 0;
-    width: 575px;
+    width: 50%;
 }
 .opc-index-index .col-lg-3 {
-    float: none;
+    #float: none;
     font-family: Arial,Helvetica,Verdana,sans-serif;
-    margin: 0 auto;
-    width: 575px;
+    margin: 135px auto;
+    width: 50%;
 }
 .opc-index-index .footer-container{
 	display: none;
@@ -701,9 +701,13 @@ float:right;margin-left:16px;}
     margin-top: 2px;
     width: 25px;
 }
+.page-title{
+    width: 200%;
+}
 .checkout-pg-logo {
     background: #000000 none repeat scroll 0 0;
     text-align: center;
+    width: 200%;
 }
 .opc-index-index .userOptions {
     background: #fefeda none repeat scroll 0 0;
@@ -738,7 +742,7 @@ float:right;margin-left:16px;}
 .coRight .coComfortCopy .coCreditImages {
     background-position: -100px -250px;
     height: 29px;
-    margin: 25px auto 20px;
+    margin: 25px auto 70px;
     width: 232px;
 }
 .coRight .coComfortCopy .coIconCont {
@@ -820,23 +824,44 @@ float:right;margin-left:16px;}
 @media (min-width: 800px) and (max-width: 980px){
 	.opc-wrapper-opc .btn-checkout.opc-btn-checkout .btn-img{
 		background-position:71% 20px;	
-	}	
+	}
+    .opc-index-index .col-lg-3{
+        margin:0 auto;
+    }
+    .page-title, .checkout-pg-logo{
+        width: 100%;
+    }
 }
 @media (min-width: 700px) and (max-width: 768px){
 .opc-wrapper-opc .btn-checkout.opc-btn-checkout .btn-img{
 		background-position: 73% 20px;
-	}	
+	}
+    .opc-index-index .col-lg-3{
+        margin:0 auto;
+    }
+    .page-title, .checkout-pg-logo{
+        width: 100%;
+    }
 }
 @media (min-width: 320px) and (max-width: 799px){
 	.opc-wrapper-opc .opc-col-left .fields .field{
 		width:100%;
 	}
+    .opc-index-index .col-lg-3{
+        margin:0 auto;
+    }
+    .page-title, .checkout-pg-logo{
+        width: 100%;
+    }
 }
 @media (min-width: 320px) and (max-width: 799px){
 .opc-wrapper-opc .btn-checkout.opc-btn-checkout .btn-img{
 		#background: #181828;
     background-position: 90% 20px;
 	}
+    .page-title, .checkout-pg-logo{
+        width: 100%;
+    }
 }
 @media (min-width: 320px) and (max-width: 360px){
 	.opc-index-index .col-main{
@@ -850,5 +875,11 @@ float:right;margin-left:16px;}
 	}
     .opc-index-index .coPlaceOrderMsg{
         font-size:14px;
+    }
+    .opc-index-index .col-lg-3{
+        margin:0 auto;
+    }
+    .page-title, .checkout-pg-logo{
+        width: 100%;
     }
 }
