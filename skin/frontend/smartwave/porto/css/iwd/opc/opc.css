@@ -633,8 +633,16 @@ float:right;margin-left:16px;}
 	width:100%;
 }
 .opc-wrapper-opc .btn-checkout.opc-btn-checkout .btn-img {
-	background:#181828 url("images/checkout-btn.png") no-repeat scroll 80% 20px;
+	background:#54b948 url("images/checkout-btn.png") no-repeat scroll 80% 20px;
     border-radius: 5px;
+}
+
+.opc-wrapper-opc .btn-checkout.opc-btn-checkout .btn-img img{
+    display: none;
+}
+
+.coComfortCopy{
+    margin-top:20px;
 }
 
 .opc-wrapper-opc .btn-checkout.opc-btn-checkout span {
