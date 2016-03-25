@@ -561,7 +561,7 @@ float:right;margin-left:16px;}
 .opc-index-index .col-lg-3 {
     #float: none;
     font-family: Arial,Helvetica,Verdana,sans-serif;
-    margin: 135px auto;
+    margin: 0px auto;
     width: 50%;
 }
 .opc-index-index .footer-container{
@@ -710,12 +710,12 @@ float:right;margin-left:16px;}
     width: 25px;
 }
 .page-title{
-    width: 200%;
+    #width: 200%;
 }
 .checkout-pg-logo {
     background: #000000 none repeat scroll 0 0;
     text-align: center;
-    width: 200%;
+    #width: 200%;
 }
 .opc-index-index .userOptions {
     background: #fefeda none repeat scroll 0 0;
@@ -824,6 +824,9 @@ float:right;margin-left:16px;}
 	float: left;
     margin: 0px 0 10px;
     width: 100%;
+}
+.opc-cc-list{
+    height:0px;
 }
 #sub_footer_number > b {
     color: #007cc3;
